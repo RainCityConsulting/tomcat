@@ -1,0 +1,14 @@
+Bash scripts for running Apache Tomcat. Tomcat 6.0.x is tested. Other versions may work.
+
+The following features are provided:
+
+* Process management - easily start, stop, restart, and kill the running server
+* Application management - easily list, deploy, undeploy, start, and stop running web application
+
+If .../bin/../.tomcat is readable, it will source this file at the start of each script (possibly multiple times, so this script must be idempotent).
+
+Required environment variables
+
+CATALINA_BASE - See Tomcat docs
+CATALINA_HOME - See Tomcat docs
+CATALINA_PID - See Tomcat docs
