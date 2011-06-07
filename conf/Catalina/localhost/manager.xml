@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <Context
-    path="/manager" 
-	docBase="${catalina.home}/webapps/manager" 
-	antiResourceLocking="false"
-    privileged="true" />
+    docBase="${catalina.home}/webapps/manager"
+    antiResourceLocking="false"
+    privileged="true"
+    useHttpOnly="true"/>
