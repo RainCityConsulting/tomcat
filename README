@@ -7,8 +7,29 @@ The following features are provided:
 
 If .../bin/../.tomcat is readable, it will source this file at the start of each script (possibly multiple times, so this script must be idempotent).
 
-Required environment variables
 
-CATALINA_BASE - See Tomcat docs
+REQUIRED ENVIRONMENT VARIABLES
+
 CATALINA_HOME - See Tomcat docs
-CATALINA_PID - See Tomcat docs
+
+
+Below are a list of commands to get up and running quickly:
+
+wget http://apache.osuosl.org/tomcat/tomcat-6/v6.0.32/bin/apache
+tar -xzf apache-tomcat-6.0.32.tar.gz
+export CATALINA_HOME=$PWD/apache-tomcat-6.0.32
+git clone git@github.com:RainCityConsulting/tomcat.git
+cd tomcat
+./bin/setup-tomcat.sh
+echo '#!/bin/bash
+export TOMCAT_MANAGER_USER=tcadmin
+export TOMCAT_MANAGER_PASSWORD=test123
+export TOMCAT_MANAGER_URL=http://localhost:8080/manager' >.tomcat
+echo '<?xml version="1.0" encoding="utf-8"?>
+<tomcat-users>
+  <role rolename="manager"/>
+  <user username="tcadmin" password="test123" roles="manager"/>
+</tomcat-users>' >conf/tomcat-users.xml
+./bin/start-tomcat.sh
+./bin/tomcat-list.sh
+./bin/tomcat-status.sh
