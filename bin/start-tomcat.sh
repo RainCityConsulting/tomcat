@@ -2,16 +2,16 @@
 
 source $(dirname $0)/include.sh
 
-if test -z "$CATALINA_BASE"; then
-    fatal "CATALINA_BASE must be set"
-fi
-
 if test -z "$CATALINA_HOME"; then
     fatal "CATALINA_HOME must be set"
 fi
 
+if test -z "$CATALINA_BASE"; then
+    export CATALINA_BASE=$BASEDIR
+fi
+
 if test -z "$CATALINA_PID"; then
-    fatal "CATALINA_PID must be set"
+    export CATALINA_PID=$CATALINA_BASE/catalina.pid
 fi
 
 function print_usage() {
