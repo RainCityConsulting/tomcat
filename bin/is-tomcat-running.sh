@@ -2,8 +2,12 @@
 
 source $(dirname $0)/include.sh
 
+if test -z "$CATALINA_BASE"; then
+    export CATALINA_BASE=$BASEDIR
+fi
+
 if test -z "$CATALINA_PID"; then
-  fatal "CATALINA_PID must be set"
+    export CATALINA_PID=$CATALINA_BASE/catalina.pid
 fi
 
 if test ! -e $CATALINA_PID; then
