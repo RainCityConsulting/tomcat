@@ -2,6 +2,14 @@
 
 source $(dirname $0)/include.sh
 
+if test -z "$CATALINA_BASE"; then
+    export CATALINA_BASE=$BASEDIR
+fi
+
+if test -z "$CATALINA_PID"; then
+    export CATALINA_PID=$CATALINA_BASE/catalina.pid
+fi
+
 function print_usage() {
     if test -n "$1"; then echo $1 1>&2; fi
     echo 1>&2
